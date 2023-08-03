@@ -1,14 +1,24 @@
-def multiplicar_matrices(matriz_1, matriz_2):
-    resultado = []
-    for i in range(len(matriz_1)):
-        for j in range(len(matriz_2[0])):
-            fila = []
+def multiplicacion_matrices(matriz1, matriz2):
+    filas_matriz1 = len(matriz1)
+    columnas_matriz1 = len(matriz1[0])
+    filas_matriz2 = len(matriz2)
+    columnas_matriz2 = len(matriz2[0])
+
+    if columnas_matriz1 != filas_matriz2:
+        return "No es posible multiplicar las matrices. La cantidad de columnas de la Matriz 1 debe ser igual a la cantidad de filas de la matriz 2"    
+    
+    matriz_resultado = []
+
+    for i in range(filas_matriz1):
+        fila_resultado = []
+        for j in range(columnas_matriz2):
             suma = 0
-            for k in range(len(matriz_2)):
-                suma += matriz_1[i][k] * matriz_2[k][j]
-            fila.append(suma)
-        resultado.append(fila)
-    return resultado
+            for k in range(filas_matriz2):
+                suma += matriz1[i][k] * matriz2[k][j]
+            fila_resultado.append(suma)
+        matriz_resultado.append(fila_resultado)
+
+    return matriz_resultado
 
 
 def producto_vectorial(vect_1, vect_2):
